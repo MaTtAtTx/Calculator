@@ -1,4 +1,4 @@
-package Controller;
+package calculator.controller;
 
 public class Runner
 {
