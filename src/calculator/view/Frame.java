@@ -19,7 +19,7 @@ public class Frame extends JFrame
 
 	private void setupFrame()
 	{
-		this.setSize(500, 400);
+		this.setSize(500, 700);
 		this.setTitle("Calculator");
 		this.setContentPane(appPanel);
 		this.setResizable(false);

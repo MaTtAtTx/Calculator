@@ -10,6 +10,30 @@ public class Panel extends JPanel
 {
 	private Controller appController;
 	private SpringLayout appLayout;
+	
+	private JButton zeroButton;
+	private JButton pointButton;
+	private JButton oneButton;
+	private JButton twoButton;
+	private JButton threeButton;
+	private JButton fourButton;
+	private JButton fiveButton;
+	private JButton sixButton;
+	private JButton sevenButton;
+	private JButton eightButton;
+	private JButton nineButton;
+	private JButton clearButton;
+	private JButton deleteButton;
+	private JButton posNegButton;
+	private JButton equalsButton;
+	private JButton addButton;
+	private JButton subtractButton;
+	private JButton multiplyButton;
+	private JButton divideButton;
+	private JButton memoryClearButton;
+	private JButton memoryAddButton;
+	private JButton memorySubtractButton;
+	private JButton memoryRecallButton;
 
 	public Panel(Controller appController)
 	{
@@ -24,7 +48,7 @@ public class Panel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(appLayout);
-		this.setSize(500, 400);
+		this.setSize(500, 700);
 		this.setBackground(new Color(128, 60, 128));
 	}
 
