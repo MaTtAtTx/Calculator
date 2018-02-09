@@ -9,13 +9,16 @@ import java.awt.event.ActionListener;
 public class Panel extends JPanel
 {
 	private Controller appController;
-
 	private SpringLayout appLayout;
 
 	public Panel(Controller appController)
 	{
 		super();
 		this.appController = appController;
+		
+		setupPanel();
+		setupLayout();
+		setupListeners();
 	}
 
 	private void setupPanel()

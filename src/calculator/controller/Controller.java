@@ -1,29 +1,49 @@
 package calculator.controller;
 
+import calculator.view.Frame;
+import javax.swing.JOptionPane;
+
+
 public class Controller
 {
+	private Frame appFrame;
+	
 	public void start()
 	{
-		
+		appFrame = new Frame(this);
 	}
 	
-	private void addition()
+	public boolean isValidInteger(String input)
 	{
+		boolean valid = false;
 		
+		try
+		{
+			Integer.parseInt(input);
+			valid = true;
+		}
+		catch (NumberFormatException error)
+		{
+			JOptionPane.showMessageDialog(appFrame, "Only integer values are valid: " + input + " is not.");
+		}
+		
+		return valid;
 	}
 	
-	private void subtraction()
+	public boolean isValidDouble(String input)
 	{
+		boolean valid = false;
 		
-	}
-	
-	private void multiplication()
-	{
+		try
+		{
+			Double.parseDouble(input);
+			valid = true;
+		}
+		catch (NumberFormatException error)
+		{
+			JOptionPane.showMessageDialog(appFrame, "Only double values are valid: " + input + " is not.");
+		}
 		
-	}
-	
-	private void division()
-	{
-		
+		return valid;
 	}
 }
