@@ -3,13 +3,15 @@ package calculator.view;
 import calculator.controller.Controller;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Panel extends JPanel
 {
 	private Controller appController;
 	private SpringLayout appLayout;
 	
-	private JLabel numScreen;
+	private JLabel numDisplay;
 	
 	private JButton zeroButton;
 	private JButton pointButton;
@@ -42,7 +44,7 @@ public class Panel extends JPanel
 		this.appController = appController;
 		appLayout = new SpringLayout();
 		
-		numScreen = new JLabel();
+		numDisplay = new JLabel();
 		
 		zeroButton = new JButton("0");
 		pointButton = new JButton(".");
@@ -80,12 +82,14 @@ public class Panel extends JPanel
 	{
 		this.setLayout(appLayout);
 		this.setSize(500,700);
-		this.setBackground(new Color(0, 0, 0));
+		this.setBackground(new Color(0,0,0));
 		
-		this.add(numScreen);
-		numScreen.setOpaque(true);
-		numScreen.setBackground(new Color(255,255,255));
-		numScreen.setPreferredSize(new Dimension(495,150));
+		this.add(numDisplay);
+		numDisplay.setFont(new Font("Calibri", Font.PLAIN, 45));
+		numDisplay.setText("test");
+		numDisplay.setOpaque(true);
+		numDisplay.setBackground(new Color(255,255,255));
+		numDisplay.setPreferredSize(new Dimension(495,150));
 		
 		this.add(zeroButton);
 		zeroButton.setPreferredSize(new Dimension(119,83));
@@ -163,9 +167,9 @@ public class Panel extends JPanel
 
 	private void setupLayout()
 	{
-		appLayout.putConstraint(SpringLayout.EAST, numScreen, -3, SpringLayout.EAST, memRecallButton);
-		appLayout.putConstraint(SpringLayout.WEST, numScreen, 3, SpringLayout.WEST, memClearButton);
-		appLayout.putConstraint(SpringLayout.NORTH, numScreen, 9, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.EAST, numDisplay, -3, SpringLayout.EAST, memRecallButton);
+		appLayout.putConstraint(SpringLayout.WEST, numDisplay, 3, SpringLayout.WEST, memClearButton);
+		appLayout.putConstraint(SpringLayout.NORTH, numDisplay, 9, SpringLayout.NORTH, this);
 		appLayout.putConstraint(SpringLayout.WEST, zeroButton, 6, SpringLayout.WEST, this);
 		appLayout.putConstraint(SpringLayout.SOUTH, zeroButton, -5, SpringLayout.SOUTH, this);
 		appLayout.putConstraint(SpringLayout.WEST, pointButton, 4, SpringLayout.EAST, zeroButton);
@@ -218,6 +222,22 @@ public class Panel extends JPanel
 
 	private void setupListeners()
 	{
-
+		zeroButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "0";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		oneButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "1";
+				numDisplay.setText(combineText);
+			}
+		});
 	}
 }
