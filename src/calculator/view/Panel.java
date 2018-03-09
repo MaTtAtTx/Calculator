@@ -37,6 +37,13 @@ public class Panel extends JPanel
 	private JButton memAddButton;
 	private JButton memSubtractButton;
 	private JButton memRecallButton;
+	
+	private double firstNum;
+	private double secondNum;
+	private double answer;
+	
+	private String stringAnswer;
+	private String operation;
 
 	public Panel(Controller appController)
 	{
@@ -67,11 +74,9 @@ public class Panel extends JPanel
 		multiplyButton = new JButton("x");
 		divideButton = new JButton("÷");
 		memClearButton = new JButton("mc");
-
 		memAddButton = new JButton("m+");
 		memSubtractButton = new JButton("m-");
 		memRecallButton = new JButton("mr");
-
 		
 		setupPanel();
 		setupLayout();
@@ -86,7 +91,6 @@ public class Panel extends JPanel
 		
 		this.add(numDisplay);
 		numDisplay.setFont(new Font("Calibri", Font.PLAIN, 45));
-		numDisplay.setText("test");
 		numDisplay.setOpaque(true);
 		numDisplay.setBackground(new Color(255,255,255));
 		numDisplay.setPreferredSize(new Dimension(495,150));
@@ -231,12 +235,184 @@ public class Panel extends JPanel
 			}
 		});
 		
+		pointButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + ".";
+				numDisplay.setText(combineText);
+			}
+		});
+		
 		oneButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
 				String combineText = numDisplay.getText() + "1";
 				numDisplay.setText(combineText);
+			}
+		});
+		
+		twoButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "2";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		threeButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "3";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		fourButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "4";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		fiveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "5";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		sixButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "6";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		sevenButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "7";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		eightButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "8";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		nineButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String combineText = numDisplay.getText() + "9";
+				numDisplay.setText(combineText);
+			}
+		});
+		
+		clearAllButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				firstNum = 0.0;
+				secondNum = 0.0;
+				answer = 0.0;
+				stringAnswer = "";
+				operation = "";
+				
+				numDisplay.setText("");
+			}
+		});
+		
+		deleteButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+
+			}
+		});
+		
+		posNegButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
+		equalsButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				secondNum = Double.parseDouble(numDisplay.getText());
+				switch (operation)
+				{
+					case "+": 	answer = firstNum + secondNum;
+								break;
+					case "-": 	answer = firstNum - secondNum;
+								break;
+					case "x": 	answer = firstNum * secondNum;
+								break;
+					case "÷": 	answer = firstNum / secondNum;
+								break;
+				}
+				stringAnswer = String.valueOf(answer);
+				numDisplay.setText(stringAnswer);
+			}
+		});
+		
+		addButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				firstNum = Double.parseDouble(numDisplay.getText());
+				operation = "+";
+				numDisplay.setText("");
+			}
+		});
+		
+		subtractButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				firstNum = Double.parseDouble(numDisplay.getText());
+				operation = "-";
+				numDisplay.setText("");
+			}
+		});
+		
+		multiplyButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				firstNum = Double.parseDouble(numDisplay.getText());
+				operation = "x";
+				numDisplay.setText("");
+			}
+		});
+		
+		divideButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				firstNum = Double.parseDouble(numDisplay.getText());
+				operation = "÷";
+				numDisplay.setText("");
 			}
 		});
 	}
