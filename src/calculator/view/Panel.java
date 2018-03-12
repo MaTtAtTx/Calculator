@@ -65,7 +65,7 @@ public class Panel extends JPanel
 		eightButton = new JButton("8");
 		nineButton = new JButton("9");
 		clearButton = new JButton("AC");
-		deleteButton = new JButton("⌫");
+		deleteButton = new JButton("del");
 		squareButton = new JButton("X²");
 		posNegButton = new JButton("+/-");
 		equalsButton = new JButton("=");
