@@ -40,7 +40,11 @@ public class Panel extends JPanel
 	
 	private double firstNum;
 	private double secondNum;
+	private double opNum;
 	private double answer;
+	
+	private boolean opStatus;
+	private boolean numStatus;
 	
 	private String stringAnswer;
 	private String operation;
@@ -230,6 +234,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "0";
 				numDisplay.setText(combineText);
 			}
@@ -239,6 +248,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + ".";
 				numDisplay.setText(combineText);
 			}
@@ -248,6 +262,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "1";
 				numDisplay.setText(combineText);
 			}
@@ -257,6 +276,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "2";
 				numDisplay.setText(combineText);
 			}
@@ -266,6 +290,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "3";
 				numDisplay.setText(combineText);
 			}
@@ -275,6 +304,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "4";
 				numDisplay.setText(combineText);
 			}
@@ -284,6 +318,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "5";
 				numDisplay.setText(combineText);
 			}
@@ -293,6 +332,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "6";
 				numDisplay.setText(combineText);
 			}
@@ -302,6 +346,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "7";
 				numDisplay.setText(combineText);
 			}
@@ -311,6 +360,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "8";
 				numDisplay.setText(combineText);
 			}
@@ -320,6 +374,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
+				if (numStatus = true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				String combineText = numDisplay.getText() + "9";
 				numDisplay.setText(combineText);
 			}
@@ -334,6 +393,8 @@ public class Panel extends JPanel
 				answer = 0.0;
 				stringAnswer = "";
 				operation = "";
+				opStatus = false;
+				numStatus = false;
 				
 				numDisplay.setText("");
 			}
@@ -360,29 +421,7 @@ public class Panel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				secondNum = Double.parseDouble(numDisplay.getText());
-				switch (operation)
-				{
-					case "+": 	answer = firstNum + secondNum;
-								break;
-					case "-": 	answer = firstNum - secondNum;
-								break;
-					case "x": 	answer = firstNum * secondNum;
-								break;
-					case "÷": 	answer = firstNum / secondNum;
-								break;
-				}
-				
-				stringAnswer = String.valueOf(answer);
-				int dotIndex = stringAnswer.indexOf(".");
-				if ((stringAnswer.length() == dotIndex + 2 && stringAnswer.lastIndexOf("0") == stringAnswer.length() - 1))
-				{
-					stringAnswer = stringAnswer.substring(0, dotIndex);
-					numDisplay.setText(stringAnswer);
-				}
-				else
-				{
-					numDisplay.setText(stringAnswer);
-				}
+				numEquals(firstNum,secondNum);
 			}
 		});
 		
@@ -390,9 +429,22 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstNum = Double.parseDouble(numDisplay.getText());
-				operation = "+";
-				numDisplay.setText("");
+				if (opStatus == false)
+				{
+					firstNum = Double.parseDouble(numDisplay.getText());
+					operation = "+";
+					numDisplay.setText("");
+				}
+				else
+				{
+					opNum = Double.parseDouble(numDisplay.getText());
+					numEquals(firstNum,opNum);
+					numDisplay.setText(stringAnswer);
+					operation = "+";
+					firstNum = answer;
+					numStatus = true;
+				}
+				opStatus = true;
 			}
 		});
 		
@@ -400,9 +452,22 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstNum = Double.parseDouble(numDisplay.getText());
-				operation = "-";
-				numDisplay.setText("");
+				if (opStatus == false)
+				{
+					firstNum = Double.parseDouble(numDisplay.getText());
+					operation = "-";
+					numDisplay.setText("");
+				}
+				else
+				{
+					opNum = Double.parseDouble(numDisplay.getText());
+					numEquals(firstNum,opNum);
+					numDisplay.setText(stringAnswer);
+					operation = "-";
+					firstNum = answer;
+					numStatus = true;
+				}
+				opStatus = true;
 			}
 		});
 		
@@ -410,9 +475,22 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstNum = Double.parseDouble(numDisplay.getText());
-				operation = "x";
-				numDisplay.setText("");
+				if (opStatus == false)
+				{
+					firstNum = Double.parseDouble(numDisplay.getText());
+					operation = "x";
+					numDisplay.setText("");
+				}
+				else
+				{
+					opNum = Double.parseDouble(numDisplay.getText());
+					numEquals(firstNum,opNum);
+					numDisplay.setText(stringAnswer);
+					operation = "x";
+					firstNum = answer;
+					numStatus = true;
+				}
+				opStatus = true;
 			}
 		});
 		
@@ -420,10 +498,50 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstNum = Double.parseDouble(numDisplay.getText());
-				operation = "÷";
-				numDisplay.setText("");
+				if (opStatus == false)
+				{
+					firstNum = Double.parseDouble(numDisplay.getText());
+					operation = "÷";
+					numDisplay.setText("");
+				}
+				else
+				{
+					opNum = Double.parseDouble(numDisplay.getText());
+					numEquals(firstNum,opNum);
+					numDisplay.setText(stringAnswer);
+					operation = "÷";
+					firstNum = answer;
+					numStatus = true;
+				}
+				opStatus = true;
 			}
 		});
+	}
+	
+	private void numEquals(double num1, double num2)
+	{
+		switch (operation)
+		{
+			case "+": 	answer = num1 + num2;
+						break;
+			case "-": 	answer = num1 - num2;
+						break;
+			case "x": 	answer = num1 * num2;
+						break;
+			case "÷": 	answer = num1 / num2;
+						break;
+		}
+		
+		stringAnswer = String.valueOf(answer);
+		int dotIndex = stringAnswer.indexOf(".");
+		if ((stringAnswer.length() == dotIndex + 2 && stringAnswer.lastIndexOf("0") == stringAnswer.length() - 1))
+		{
+			stringAnswer = stringAnswer.substring(0, dotIndex);
+			numDisplay.setText(stringAnswer);
+		}
+		else
+		{
+			numDisplay.setText(stringAnswer);
+		}
 	}
 }
