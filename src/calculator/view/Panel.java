@@ -230,6 +230,8 @@ public class Panel extends JPanel
 
 	private void setupListeners()
 	{
+		numStatus = false;
+		
 		zeroButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -439,7 +441,6 @@ public class Panel extends JPanel
 				{
 					opNum = Double.parseDouble(numDisplay.getText());
 					numEquals(firstNum,opNum);
-					numDisplay.setText(stringAnswer);
 					operation = "+";
 					firstNum = answer;
 					numStatus = true;
@@ -462,7 +463,6 @@ public class Panel extends JPanel
 				{
 					opNum = Double.parseDouble(numDisplay.getText());
 					numEquals(firstNum,opNum);
-					numDisplay.setText(stringAnswer);
 					operation = "-";
 					firstNum = answer;
 					numStatus = true;
@@ -485,7 +485,6 @@ public class Panel extends JPanel
 				{
 					opNum = Double.parseDouble(numDisplay.getText());
 					numEquals(firstNum,opNum);
-					numDisplay.setText(stringAnswer);
 					operation = "x";
 					firstNum = answer;
 					numStatus = true;
@@ -508,7 +507,6 @@ public class Panel extends JPanel
 				{
 					opNum = Double.parseDouble(numDisplay.getText());
 					numEquals(firstNum,opNum);
-					numDisplay.setText(stringAnswer);
 					operation = "÷";
 					firstNum = answer;
 					numStatus = true;
