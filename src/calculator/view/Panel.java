@@ -85,7 +85,19 @@ public class Panel extends JPanel
 		memSubtractButton = new JButton("m-");
 		memRecallButton = new JButton("mr");
 		
+		firstNum = 0.0;
+		secondNum = 0.0;
+		opNum = 0.0;
+		answer = 0.0;
+		
+		pointCount = 0;
+		
+		opStatus = false;
 		numStatus = false;
+		zeroFirst = false;
+		
+		stringAnswer = "";
+		operation = "";
 		
 		setupPanel();
 		setupLayout();
@@ -239,11 +251,11 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-//				if (numStatus = true)
-//				{
-//					numDisplay.setText("");
-//					numStatus = false;
-//				}
+				if (numStatus == true)
+				{
+					numDisplay.setText("");
+					numStatus = false;
+				}
 				if (numDisplay.getText().equals(""))
 				{
 					combineNum("0");
@@ -277,9 +289,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				zeroFirst = false;
-				
-				if (zeroFirst = true)
+				if (zeroFirst == true)
 				{
 					numDisplay.setText("");
 					combineNum("1");
