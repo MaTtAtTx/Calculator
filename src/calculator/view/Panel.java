@@ -82,6 +82,8 @@ public class Panel extends JPanel
 		memSubtractButton = new JButton("m-");
 		memRecallButton = new JButton("mr");
 		
+		numStatus = false;
+		
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -229,20 +231,12 @@ public class Panel extends JPanel
 	}
 
 	private void setupListeners()
-	{
-		numStatus = false;
-		
+	{	
 		zeroButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "0";
-				numDisplay.setText(combineText);
+				combineNum("0");
 			}
 		});
 		
@@ -250,13 +244,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + ".";
-				numDisplay.setText(combineText);
+				combineNum(".");
 			}
 		});
 		
@@ -264,13 +252,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "1";
-				numDisplay.setText(combineText);
+				combineNum("1");
 			}
 		});
 		
@@ -278,13 +260,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "2";
-				numDisplay.setText(combineText);
+				combineNum("2");
 			}
 		});
 		
@@ -292,13 +268,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "3";
-				numDisplay.setText(combineText);
+				combineNum("3");
 			}
 		});
 		
@@ -306,13 +276,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "4";
-				numDisplay.setText(combineText);
+				combineNum("4");
 			}
 		});
 		
@@ -320,13 +284,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "5";
-				numDisplay.setText(combineText);
+				combineNum("5");
 			}
 		});
 		
@@ -334,13 +292,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "6";
-				numDisplay.setText(combineText);
+				combineNum("6");
 			}
 		});
 		
@@ -348,13 +300,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "7";
-				numDisplay.setText(combineText);
+				combineNum("7");
 			}
 		});
 		
@@ -362,13 +308,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "8";
-				numDisplay.setText(combineText);
+				combineNum("8");
 			}
 		});
 		
@@ -376,13 +316,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus = true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				String combineText = numDisplay.getText() + "9";
-				numDisplay.setText(combineText);
+				combineNum("9");
 			}
 		});
 		
@@ -540,6 +474,48 @@ public class Panel extends JPanel
 		else
 		{
 			numDisplay.setText(stringAnswer);
+		}
+	}
+	
+	private void combineNum(String currentValue)
+	{
+		String combineText = "";
+		
+		switch (currentValue)
+		{
+			case "0": 	combineText = numDisplay.getText() + "0";
+						numDisplay.setText(combineText);
+						break;
+			case ".": 	combineText = numDisplay.getText() + ".";
+						numDisplay.setText(combineText);
+						break;
+			case "1": 	combineText = numDisplay.getText() + "1";
+						numDisplay.setText(combineText);
+						break;
+			case "2": 	combineText = numDisplay.getText() + "2";
+						numDisplay.setText(combineText);
+						break;
+			case "3": 	combineText = numDisplay.getText() + "3";
+						numDisplay.setText(combineText);
+						break;
+			case "4": 	combineText = numDisplay.getText() + "4";
+						numDisplay.setText(combineText);
+						break;
+			case "5": 	combineText = numDisplay.getText() + "5";
+						numDisplay.setText(combineText);
+						break;
+			case "6": 	combineText = numDisplay.getText() + "6";
+						numDisplay.setText(combineText);
+						break;
+			case "7": 	combineText = numDisplay.getText() + "7";
+						numDisplay.setText(combineText);
+						break;
+			case "8": 	combineText = numDisplay.getText() + "8";
+						numDisplay.setText(combineText);
+						break;
+			case "9": 	combineText = numDisplay.getText() + "9";
+						numDisplay.setText(combineText);
+						break;
 		}
 	}
 }
