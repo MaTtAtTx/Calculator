@@ -545,6 +545,7 @@ public class Panel extends JPanel
 			{
 				secondNum = Double.parseDouble(numDisplay.getText());
 				numEquals(firstNum,secondNum);
+				opStatus = false;
 			}
 		});
 		
