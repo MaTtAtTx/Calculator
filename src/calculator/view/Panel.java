@@ -471,6 +471,26 @@ public class Panel extends JPanel
 		removePoint(stringAnswer);
 	}
 	
+	private void mathButton(int currentNum)
+	{
+		if (numStatus == true)
+		{
+			numDisplay.setText("");
+			numStatus = false;
+		}
+		
+		if (zeroFirst == true)
+		{
+			numDisplay.setText("");
+			combineNum(String.valueOf(currentNum));
+			zeroFirst = false;
+		}
+		else
+		{
+			combineNum(String.valueOf(currentNum));
+		}
+	}
+	
 	private void combineNum(String currentValue)
 	{
 		String combineText = "";
@@ -513,26 +533,6 @@ public class Panel extends JPanel
 			case "9": 	combineText = numDisplay.getText() + "9";
 						numDisplay.setText(combineText);
 						break;
-		}
-	}
-	
-	private void mathButton(int currentNum)
-	{
-		if (numStatus == true)
-		{
-			numDisplay.setText("");
-			numStatus = false;
-		}
-		
-		if (zeroFirst == true)
-		{
-			numDisplay.setText("");
-			combineNum(String.valueOf(currentNum));
-			zeroFirst = false;
-		}
-		else
-		{
-			combineNum(String.valueOf(currentNum));
 		}
 	}
 	
