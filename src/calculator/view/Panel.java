@@ -47,6 +47,7 @@ public class Panel extends JPanel
 	
 	private boolean opStatus;
 	private boolean numStatus;
+	private boolean equalStatus;
 	private boolean zeroFirst;
 	
 	private String stringAnswer;
@@ -94,6 +95,7 @@ public class Panel extends JPanel
 		
 		opStatus = false;
 		numStatus = false;
+		equalStatus = true;
 		zeroFirst = false;
 		
 		stringAnswer = "";
@@ -382,6 +384,7 @@ public class Panel extends JPanel
 				operation = "";
 				opStatus = false;
 				numStatus = false;
+				equalStatus = true;
 				zeroFirst = false;
 				pointCount = 0;
 				
@@ -415,9 +418,17 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				secondNum = Double.parseDouble(numDisplay.getText());
-				numEquals(firstNum,secondNum);
-				opStatus = false;
+				if (equalStatus == true)
+				{
+					secondNum = Double.parseDouble(numDisplay.getText());
+					numEquals(firstNum,secondNum);
+					opStatus = false;
+					equalStatus = false;
+				}
+				else
+				{
+					// Do Nothing
+				}
 			}
 		});
 		
@@ -558,6 +569,7 @@ public class Panel extends JPanel
 			operation = mathOp;
 			numDisplay.setText("");
 			opStatus = true;
+			equalStatus = true;
 			pointCount = 0;
 		}
 		else
@@ -567,6 +579,7 @@ public class Panel extends JPanel
 			operation = mathOp;
 			firstNum = answer;
 			numStatus = true;
+			equalStatus = true;
 			pointCount = 0;
 		}
 	}
