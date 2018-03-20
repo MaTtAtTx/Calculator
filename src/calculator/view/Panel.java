@@ -302,22 +302,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("1");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("1");
-				}
+				mathButton(1);
 			}
 		});
 		
@@ -325,22 +310,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("2");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("2");
-				}
+				mathButton(2);
 			}
 		});
 		
@@ -348,22 +318,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("3");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("3");
-				}
+				mathButton(3);
 			}
 		});
 		
@@ -371,22 +326,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("4");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("4");
-				}
+				mathButton(4);
 			}
 		});
 		
@@ -394,22 +334,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("5");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("5");
-				}
+				mathButton(5);
 			}
 		});
 		
@@ -417,22 +342,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("6");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("6");
-				}
+				mathButton(6);
 			}
 		});
 		
@@ -440,22 +350,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("7");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("7");
-				}
+				mathButton(7);
 			}
 		});
 		
@@ -463,22 +358,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("8");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("8");
-				}
+				mathButton(8);
 			}
 		});
 		
@@ -486,22 +366,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (zeroFirst == true)
-				{
-					numDisplay.setText("");
-					combineNum("9");
-					zeroFirst = false;
-				}
-				else
-				{
-					combineNum("9");
-				}
+				mathButton(9);
 			}
 		});
 		
@@ -559,23 +424,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (opStatus == false)
-				{
-					firstNum = Double.parseDouble(numDisplay.getText());
-					operation = "+";
-					numDisplay.setText("");
-					opStatus = true;
-					pointCount = 0;
-				}
-				else
-				{
-					opNum = Double.parseDouble(numDisplay.getText());
-					numEquals(firstNum,opNum);
-					operation = "+";
-					firstNum = answer;
-					numStatus = true;
-					pointCount = 0;
-				}
+				mathOperation("+");
 			}
 		});
 		
@@ -583,23 +432,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (opStatus == false)
-				{
-					firstNum = Double.parseDouble(numDisplay.getText());
-					operation = "-";
-					numDisplay.setText("");
-					opStatus = true;
-					pointCount = 0;
-				}
-				else
-				{
-					opNum = Double.parseDouble(numDisplay.getText());
-					numEquals(firstNum,opNum);
-					operation = "-";
-					firstNum = answer;
-					numStatus = true;
-					pointCount = 0;
-				}
+				mathOperation("-");
 			}
 		});
 		
@@ -607,23 +440,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (opStatus == false)
-				{
-					firstNum = Double.parseDouble(numDisplay.getText());
-					operation = "x";
-					numDisplay.setText("");
-					opStatus = true;
-					pointCount = 0;
-				}
-				else
-				{
-					opNum = Double.parseDouble(numDisplay.getText());
-					numEquals(firstNum,opNum);
-					operation = "x";
-					firstNum = answer;
-					numStatus = true;
-					pointCount = 0;
-				}
+				mathOperation("x");
 			}
 		});
 		
@@ -631,23 +448,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (opStatus == false)
-				{
-					firstNum = Double.parseDouble(numDisplay.getText());
-					operation = "÷";
-					numDisplay.setText("");
-					opStatus = true;
-					pointCount = 0;
-				}
-				else
-				{
-					opNum = Double.parseDouble(numDisplay.getText());
-					numEquals(firstNum,opNum);
-					operation = "÷";
-					firstNum = answer;
-					numStatus = true;
-					pointCount = 0;
-				}
+				mathOperation("÷");
 			}
 		});
 	}
@@ -714,6 +515,26 @@ public class Panel extends JPanel
 		}
 	}
 	
+	private void mathButton(int currentNum)
+	{
+		if (numStatus == true)
+		{
+			numDisplay.setText("");
+			numStatus = false;
+		}
+		
+		if (zeroFirst == true)
+		{
+			numDisplay.setText("");
+			combineNum(String.valueOf(currentNum));
+			zeroFirst = false;
+		}
+		else
+		{
+			combineNum(String.valueOf(currentNum));
+		}
+	}
+	
 	private void removePoint(String answer)
 	{
 		int dotIndex = answer.indexOf(".");
@@ -725,6 +546,27 @@ public class Panel extends JPanel
 		else
 		{
 			numDisplay.setText(answer);
+		}
+	}
+	
+	private void mathOperation(String mathOp)
+	{
+		if (opStatus == false)
+		{
+			firstNum = Double.parseDouble(numDisplay.getText());
+			operation = mathOp;
+			numDisplay.setText("");
+			opStatus = true;
+			pointCount = 0;
+		}
+		else
+		{
+			opNum = Double.parseDouble(numDisplay.getText());
+			numEquals(firstNum,opNum);
+			operation = mathOp;
+			firstNum = answer;
+			numStatus = true;
+			pointCount = 0;
 		}
 	}
 }
