@@ -527,7 +527,10 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-
+				double squareNum = Double.parseDouble(numDisplay.getText());
+				squareNum = squareNum * squareNum;
+				String squareString = String.valueOf(squareNum);
+				removePoint(squareString);
 			}
 		});
 		
@@ -535,7 +538,10 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				
+				double prevNum = Double.parseDouble(numDisplay.getText());
+				double newNum = prevNum * -1;
+				String newString = String.valueOf(newNum);
+				removePoint(newString);
 			}
 		});
 		
@@ -659,18 +665,8 @@ public class Panel extends JPanel
 			case "÷": 	answer = num1 / num2;
 						break;
 		}
-		
 		stringAnswer = String.valueOf(answer);
-		int dotIndex = stringAnswer.indexOf(".");
-		if ((stringAnswer.length() == dotIndex + 2 && stringAnswer.lastIndexOf("0") == stringAnswer.length() - 1))
-		{
-			stringAnswer = stringAnswer.substring(0, dotIndex);
-			numDisplay.setText(stringAnswer);
-		}
-		else
-		{
-			numDisplay.setText(stringAnswer);
-		}
+		removePoint(stringAnswer);
 	}
 	
 	private void combineNum(String currentValue)
@@ -715,6 +711,20 @@ public class Panel extends JPanel
 			case "9": 	combineText = numDisplay.getText() + "9";
 						numDisplay.setText(combineText);
 						break;
+		}
+	}
+	
+	private void removePoint(String answer)
+	{
+		int dotIndex = answer.indexOf(".");
+		if ((answer.length() == dotIndex + 2 && answer.lastIndexOf("0") == answer.length() - 1))
+		{
+			answer = answer.substring(0, dotIndex);
+			numDisplay.setText(answer);
+		}
+		else
+		{
+			numDisplay.setText(answer);
 		}
 	}
 }
