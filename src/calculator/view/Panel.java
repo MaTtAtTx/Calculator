@@ -95,7 +95,7 @@ public class Panel extends JPanel
 		
 		opStatus = false;
 		numStatus = false;
-		equalStatus = true;
+		equalStatus = false;
 		zeroFirst = false;
 		
 		stringAnswer = "";
@@ -295,7 +295,7 @@ public class Panel extends JPanel
 				}
 				else
 				{
-					// Do Nothing
+					//Do Nothing
 				}
 			}
 		});
@@ -384,7 +384,7 @@ public class Panel extends JPanel
 				operation = "";
 				opStatus = false;
 				numStatus = false;
-				equalStatus = true;
+				equalStatus = false;
 				zeroFirst = false;
 				pointCount = 0;
 				
@@ -427,7 +427,7 @@ public class Panel extends JPanel
 				}
 				else
 				{
-					// Do Nothing
+					//Do Nothing
 				}
 			}
 		});
@@ -476,6 +476,8 @@ public class Panel extends JPanel
 			case "x": 	answer = num1 * num2;
 						break;
 			case "÷": 	answer = num1 / num2;
+						break;
+			case "": 	
 						break;
 		}
 		stringAnswer = String.valueOf(answer);
