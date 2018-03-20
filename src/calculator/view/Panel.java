@@ -376,6 +376,7 @@ public class Panel extends JPanel
 			{
 				firstNum = 0.0;
 				secondNum = 0.0;
+				opNum = 0.0;
 				answer = 0.0;
 				stringAnswer = "";
 				operation = "";
