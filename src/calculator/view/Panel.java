@@ -415,8 +415,8 @@ public class Panel extends JPanel
 				if (zeroFirst == false && numDisplay.getText().length() > 0 && !numDisplay.getText().equals("0."))
 				{
 					double prevNum = Double.parseDouble(numDisplay.getText());
-					double newNum = prevNum * -1;
-					String newString = String.valueOf(newNum);
+					prevNum = prevNum * -1;
+					String newString = String.valueOf(prevNum);
 					newString = removePoint(newString);
 					if (newString.equals("0") || newString.equals("-0"))
 					{
@@ -424,6 +424,10 @@ public class Panel extends JPanel
 					}
 					else
 					{
+						if (!newString.contains("."))
+						{
+							pointCount = 0;
+						}
 						numDisplay.setText(newString);
 					}
 				}
