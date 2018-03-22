@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Panel extends JPanel
 {
@@ -52,6 +54,8 @@ public class Panel extends JPanel
 	
 	private String stringAnswer;
 	private String operation;
+	
+	private List<String> answerList;
 
 	public Panel(Controller appController)
 	{
@@ -99,7 +103,9 @@ public class Panel extends JPanel
 		zeroFirst = false;
 		
 		stringAnswer = "";
-		operation = "";
+		operation = ""; 
+		
+		answerList = new ArrayList<>();
 		
 		setupPanel();
 		setupLayout();
@@ -609,8 +615,18 @@ public class Panel extends JPanel
 		}
 	}
 	
-	private void roundNumber()
+	private void roundNumber(String answer)
 	{
-		
+		if (answer.length() > 17)
+		{
+			for (int index = 0; index < answer.length() - 1; index ++)
+			{
+				
+			}
+		}
+		else
+		{
+			//Do Nothing
+		}
 	}
 }
