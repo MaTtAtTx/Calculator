@@ -246,7 +246,7 @@ public class Panel extends JPanel
 		appLayout.putConstraint(SpringLayout.WEST, memRecallButton, 0, SpringLayout.WEST, divideButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, memRecallButton, 0, SpringLayout.SOUTH, memSubtractButton);
 	}
-
+	
 	private void setupListeners()
 	{	
 		zeroButton.addActionListener(new ActionListener()
@@ -263,6 +263,10 @@ public class Panel extends JPanel
 				{
 					combineNum("0");
 					zeroFirst = true;
+				}
+				else if (zeroFirst == true)
+				{
+					//Do Nothing
 				}
 				else
 				{
@@ -399,7 +403,8 @@ public class Panel extends JPanel
 				double squareNum = Double.parseDouble(numDisplay.getText());
 				squareNum = squareNum * squareNum;
 				String squareString = String.valueOf(squareNum);
-				removePoint(squareString);
+				squareString = removePoint(squareString);
+				numDisplay.setText(squareString);
 			}
 		});
 		
@@ -407,10 +412,21 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				double prevNum = Double.parseDouble(numDisplay.getText());
-				double newNum = prevNum * -1;
-				String newString = String.valueOf(newNum);
-				removePoint(newString);
+				if (zeroFirst == false && numDisplay.getText().length() > 0 && !numDisplay.getText().equals("0."))
+				{
+					double prevNum = Double.parseDouble(numDisplay.getText());
+					double newNum = prevNum * -1;
+					String newString = String.valueOf(newNum);
+					newString = removePoint(newString);
+					if (newString.equals("0") || newString.equals("-0"))
+					{
+						//Do Nothing
+					}
+					else
+					{
+						numDisplay.setText(newString);
+					}
+				}
 			}
 		});
 		
@@ -477,11 +493,12 @@ public class Panel extends JPanel
 						break;
 			case "÷": 	answer = num1 / num2;
 						break;
-			case "": 	
+			case "": 	//Do Nothing
 						break;
 		}
 		stringAnswer = String.valueOf(answer);
-		removePoint(stringAnswer);
+		stringAnswer = removePoint(stringAnswer);
+		numDisplay.setText(stringAnswer);
 	}
 	
 	private void mathButton(int currentNum)
@@ -549,18 +566,20 @@ public class Panel extends JPanel
 		}
 	}
 	
-	private void removePoint(String answer)
+	private String removePoint(String answer)
 	{
+		String results = "";
 		int dotIndex = answer.indexOf(".");
 		if ((answer.length() == dotIndex + 2 && answer.lastIndexOf("0") == answer.length() - 1))
 		{
 			answer = answer.substring(0, dotIndex);
-			numDisplay.setText(answer);
 		}
 		else
 		{
-			numDisplay.setText(answer);
+			//Do Nothing
 		}
+		results = answer;
+		return results;
 	}
 	
 	private void mathOperation(String mathOp)
@@ -584,5 +603,10 @@ public class Panel extends JPanel
 			equalStatus = true;
 			pointCount = 0;
 		}
+	}
+	
+	private void roundNumber()
+	{
+		
 	}
 }
