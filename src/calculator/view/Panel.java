@@ -555,22 +555,29 @@ public class Panel extends JPanel
 	
 	private void numEquals(double num1, double num2)
 	{
-		switch (operation)
+		if (operation.equals("÷") && num2 == 0)
 		{
-			case "+": 	answer = num1 + num2;
-						break;
-			case "-": 	answer = num1 - num2;
-						break;
-			case "x": 	answer = num1 * num2;
-						break;
-			case "÷": 	answer = num1 / num2;
-						break;
-			case "": 	//Do Nothing
-						break;
+			numDisplay.setText("Undefined");
 		}
-		stringAnswer = String.valueOf(answer);
-		stringAnswer = removePoint(stringAnswer);
-		numDisplay.setText(stringAnswer);
+		else
+		{
+			switch (operation)
+			{
+				case "+": 	answer = num1 + num2;
+							break;
+				case "-": 	answer = num1 - num2;
+							break;
+				case "x": 	answer = num1 * num2;
+							break;
+				case "÷": 	answer = num1 / num2;
+							break;
+				case "": 	//Do Nothing
+							break;
+			}
+			stringAnswer = String.valueOf(answer);
+			stringAnswer = removePoint(stringAnswer);
+			numDisplay.setText(stringAnswer);
+		}
 	}
 	
 	private void mathButton(int currentNum)
