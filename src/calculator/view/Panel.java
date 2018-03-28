@@ -42,6 +42,7 @@ public class Panel extends JPanel
 	private double secondNum;
 	private double opNum;
 	private double answer;
+	private double memNum;
 	
 	private int pointCount;
 	
@@ -90,6 +91,7 @@ public class Panel extends JPanel
 		secondNum = 0.0;
 		opNum = 0.0;
 		answer = 0.0;
+		memNum = 0.0;
 		
 		pointCount = 0;
 		
@@ -509,6 +511,44 @@ public class Panel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				mathOperation("÷");
+			}
+		});
+		
+		memClearButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				memNum = 0.0;
+			}
+		});
+		
+		memAddButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String tempString = numDisplay.getText();
+				Double tempNum = Double.parseDouble(tempString);
+				memNum = memNum + tempNum;
+			}
+		});
+		
+		memSubtractButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String tempString = numDisplay.getText();
+				Double tempNum = Double.parseDouble(tempString);
+				memNum = memNum - tempNum;
+			}
+		});
+		
+		memRecallButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String newString = String.valueOf(memNum);
+				newString = removePoint(newString);
+				numDisplay.setText(newString);
 			}
 		});
 	}
