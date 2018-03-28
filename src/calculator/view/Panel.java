@@ -396,6 +396,34 @@ public class Panel extends JPanel
 			}
 		});
 		
+		deleteButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				if (numDisplay.getText().equals(""))
+				{
+					//Do Nothing
+				}
+				else if (numDisplay.getText().equals("0."))
+				{
+					numDisplay.setText("");
+					if (!numDisplay.getText().contains("."))
+					{
+						pointCount = 0;
+					}	
+				}
+				else
+				{
+					String tempString = numDisplay.getText();
+					numDisplay.setText(tempString.substring(0, tempString.length() - 1));
+					if (!numDisplay.getText().contains("."))
+					{
+						pointCount = 0;
+					}
+				}
+			}
+		});
+		
 		squareButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -609,7 +637,7 @@ public class Panel extends JPanel
 		}
 	}
 	
-	private void roundNumber(String answer)
+	private void roundNumber()
 	{
 		
 	}
