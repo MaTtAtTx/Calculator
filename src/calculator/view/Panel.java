@@ -604,9 +604,16 @@ public class Panel extends JPanel
 				}
 				else
 				{
-					String newString = String.valueOf(memNum);
-					newString = removePoint(newString);
-					numDisplay.setText(newString);
+					if (memNum == 0.0)
+					{
+						//Do Nothing
+					}
+					else
+					{
+						String newString = String.valueOf(memNum);
+						newString = removePoint(newString);
+						numDisplay.setText(newString);
+					}
 				}
 			}
 		});
