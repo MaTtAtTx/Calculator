@@ -290,27 +290,34 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
+				if (undefinedStatus == true)
 				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (numDisplay.getText().equals("") && pointCount == 0)
-				{
-					combineNum("0.");
-					pointCount++;
-					zeroFirst = false;
-				}
-				else if (pointCount == 0)
-				{
-					combineNum(".");
-					pointCount++;
-					zeroFirst = false;
+					//Do Nothing
 				}
 				else
 				{
-					//Do Nothing
+					if (numStatus == true)
+					{
+						numDisplay.setText("");
+						numStatus = false;
+					}
+					
+					if (numDisplay.getText().equals("") && pointCount == 0)
+					{
+						combineNum("0.");
+						pointCount++;
+						zeroFirst = false;
+					}
+					else if (pointCount == 0)
+					{
+						combineNum(".");
+						pointCount++;
+						zeroFirst = false;
+					}
+					else
+					{
+						//Do Nothing
+					}
 				}
 			}
 		});
@@ -557,9 +564,16 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String tempString = numDisplay.getText();
-				Double tempNum = Double.parseDouble(tempString);
-				memNum = memNum + tempNum;
+				if (undefinedStatus == true)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					String tempString = numDisplay.getText();
+					Double tempNum = Double.parseDouble(tempString);
+					memNum = memNum + tempNum;
+				}
 			}
 		});
 		
@@ -567,9 +581,16 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String tempString = numDisplay.getText();
-				Double tempNum = Double.parseDouble(tempString);
-				memNum = memNum - tempNum;
+				if (undefinedStatus == true)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					String tempString = numDisplay.getText();
+					Double tempNum = Double.parseDouble(tempString);
+					memNum = memNum - tempNum;
+				}
 			}
 		});
 		
@@ -577,9 +598,16 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String newString = String.valueOf(memNum);
-				newString = removePoint(newString);
-				numDisplay.setText(newString);
+				if (undefinedStatus == true)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					String newString = String.valueOf(memNum);
+					newString = removePoint(newString);
+					numDisplay.setText(newString);
+				}
 			}
 		});
 	}
@@ -589,6 +617,7 @@ public class Panel extends JPanel
 		if (operation.equals("÷") && num2 == 0)
 		{
 			numDisplay.setText("Undefined");
+			undefinedStatus = true;
 		}
 		else
 		{
@@ -613,21 +642,28 @@ public class Panel extends JPanel
 	
 	private void mathButton(int currentNum)
 	{
-		if (numStatus == true)
+		if (undefinedStatus == true)
 		{
-			numDisplay.setText("");
-			numStatus = false;
-		}
-		
-		if (zeroFirst == true)
-		{
-			numDisplay.setText("");
-			combineNum(String.valueOf(currentNum));
-			zeroFirst = false;
+			//Do Nothing
 		}
 		else
 		{
-			combineNum(String.valueOf(currentNum));
+			if (numStatus == true)
+			{
+				numDisplay.setText("");
+				numStatus = false;
+			}
+			
+			if (zeroFirst == true)
+			{
+				numDisplay.setText("");
+				combineNum(String.valueOf(currentNum));
+				zeroFirst = false;
+			}
+			else
+			{
+				combineNum(String.valueOf(currentNum));
+			}
 		}
 	}
 	
@@ -694,24 +730,31 @@ public class Panel extends JPanel
 	
 	private void mathOperation(String mathOp)
 	{
-		if (opStatus == false)
+		if (undefinedStatus == true)
 		{
-			firstNum = Double.parseDouble(numDisplay.getText());
-			operation = mathOp;
-			numDisplay.setText("");
-			opStatus = true;
-			equalStatus = true;
-			pointCount = 0;
+			//Do Nothing
 		}
 		else
 		{
-			opNum = Double.parseDouble(numDisplay.getText());
-			numEquals(firstNum,opNum);
-			operation = mathOp;
-			firstNum = answer;
-			numStatus = true;
-			equalStatus = true;
-			pointCount = 0;
+			if (opStatus == false)
+			{
+				firstNum = Double.parseDouble(numDisplay.getText());
+				operation = mathOp;
+				numDisplay.setText("");
+				opStatus = true;
+				equalStatus = true;
+				pointCount = 0;
+			}
+			else
+			{
+				opNum = Double.parseDouble(numDisplay.getText());
+				numEquals(firstNum,opNum);
+				operation = mathOp;
+				firstNum = answer;
+				numStatus = true;
+				equalStatus = true;
+				pointCount = 0;
+			}
 		}
 	}
 	
