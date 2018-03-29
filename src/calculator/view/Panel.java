@@ -421,7 +421,7 @@ public class Panel extends JPanel
 			{
 				if (undefinedStatus == true)
 				{
-					//Do nothing
+					//Do Nothing
 				}
 				else
 				{
