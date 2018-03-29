@@ -50,6 +50,7 @@ public class Panel extends JPanel
 	private boolean numStatus;
 	private boolean equalStatus;
 	private boolean zeroFirst;
+	private boolean undefinedStatus;
 	
 	private String stringAnswer;
 	private String operation;
@@ -99,6 +100,7 @@ public class Panel extends JPanel
 		numStatus = false;
 		equalStatus = false;
 		zeroFirst = false;
+		undefinedStatus = false;
 		
 		stringAnswer = "";
 		operation = ""; 
@@ -255,24 +257,31 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numStatus == true)
-				{
-					numDisplay.setText("");
-					numStatus = false;
-				}
-				
-				if (numDisplay.getText().equals(""))
-				{
-					combineNum("0");
-					zeroFirst = true;
-				}
-				else if (zeroFirst == true)
+				if (undefinedStatus == true)
 				{
 					//Do Nothing
 				}
 				else
 				{
-					combineNum("0");
+					if (numStatus == true)
+					{
+						numDisplay.setText("");
+						numStatus = false;
+					}
+					
+					if (numDisplay.getText().equals(""))
+					{
+						combineNum("0");
+						zeroFirst = true;
+					}
+					else if (zeroFirst == true)
+					{
+						//Do Nothing
+					}
+					else
+					{
+						combineNum("0");
+					}
 				}
 			}
 		});
@@ -392,6 +401,7 @@ public class Panel extends JPanel
 				numStatus = false;
 				equalStatus = false;
 				zeroFirst = false;
+				undefinedStatus = false;
 				pointCount = 0;
 				
 				numDisplay.setText("");
@@ -402,25 +412,32 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (numDisplay.getText().equals(""))
+				if (undefinedStatus == true)
 				{
-					//Do Nothing
-				}
-				else if (numDisplay.getText().equals("0."))
-				{
-					numDisplay.setText("");
-					if (!numDisplay.getText().contains("."))
-					{
-						pointCount = 0;
-					}	
+					//Do nothing
 				}
 				else
 				{
-					String tempString = numDisplay.getText();
-					numDisplay.setText(tempString.substring(0, tempString.length() - 1));
-					if (!numDisplay.getText().contains("."))
+					if (numDisplay.getText().equals(""))
 					{
-						pointCount = 0;
+						//Do Nothing
+					}
+					else if (numDisplay.getText().equals("0."))
+					{
+						numDisplay.setText("");
+						if (!numDisplay.getText().contains("."))
+						{
+							pointCount = 0;
+						}	
+					}
+					else
+					{
+						String tempString = numDisplay.getText();
+						numDisplay.setText(tempString.substring(0, tempString.length() - 1));
+						if (!numDisplay.getText().contains("."))
+						{
+							pointCount = 0;
+						}
 					}
 				}
 			}
@@ -430,11 +447,18 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				double squareNum = Double.parseDouble(numDisplay.getText());
-				squareNum = squareNum * squareNum;
-				String squareString = String.valueOf(squareNum);
-				squareString = removePoint(squareString);
-				numDisplay.setText(squareString);
+				if (undefinedStatus == true)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					double squareNum = Double.parseDouble(numDisplay.getText());
+					squareNum = squareNum * squareNum;
+					String squareString = String.valueOf(squareNum);
+					squareString = removePoint(squareString);
+					numDisplay.setText(squareString);
+				}
 			}
 		});
 		
@@ -442,23 +466,30 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (zeroFirst == false && numDisplay.getText().length() > 0 && !numDisplay.getText().equals("0."))
+				if (undefinedStatus == true)
 				{
-					double prevNum = Double.parseDouble(numDisplay.getText());
-					prevNum = prevNum * -1;
-					String newString = String.valueOf(prevNum);
-					newString = removePoint(newString);
-					if (newString.equals("0") || newString.equals("-0"))
+					//Do Nothing
+				}
+				else
+				{
+					if (zeroFirst == false && numDisplay.getText().length() > 0 && !numDisplay.getText().equals("0."))
 					{
-						//Do Nothing
-					}
-					else
-					{
-						if (!newString.contains("."))
+						double prevNum = Double.parseDouble(numDisplay.getText());
+						prevNum = prevNum * -1;
+						String newString = String.valueOf(prevNum);
+						newString = removePoint(newString);
+						if (newString.equals("0") || newString.equals("-0"))
 						{
-							pointCount = 0;
+							//Do Nothing
 						}
-						numDisplay.setText(newString);
+						else
+						{
+							if (!newString.contains("."))
+							{
+								pointCount = 0;
+							}
+							numDisplay.setText(newString);
+						}
 					}
 				}
 			}
