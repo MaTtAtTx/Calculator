@@ -764,9 +764,4 @@ public class Panel extends JPanel
 			}
 		}
 	}
-	
-	private void roundNumber()
-	{
-		
-	}
 }
