@@ -619,6 +619,36 @@ public class Panel extends JPanel
 		});
 	}
 	
+	private void mathOperation(String mathOp)
+	{
+		if (undefinedStatus == true)
+		{
+			//Do Nothing
+		}
+		else
+		{
+			if (opStatus == false)
+			{
+				firstNum = Double.parseDouble(numDisplay.getText());
+				operation = mathOp;
+				numDisplay.setText("");
+				opStatus = true;
+				equalStatus = true;
+				pointCount = 0;
+			}
+			else
+			{
+				opNum = Double.parseDouble(numDisplay.getText());
+				numEquals(firstNum,opNum);
+				operation = mathOp;
+				firstNum = answer;
+				numStatus = true;
+				equalStatus = true;
+				pointCount = 0;
+			}
+		}
+	}
+	
 	private void numEquals(double num1, double num2)
 	{
 		if (operation.equals("÷") && num2 == 0)
@@ -645,6 +675,22 @@ public class Panel extends JPanel
 			stringAnswer = removePoint(stringAnswer);
 			numDisplay.setText(stringAnswer);
 		}
+	}
+	
+	private String removePoint(String answer)
+	{
+		String results = "";
+		int dotIndex = answer.indexOf(".");
+		if ((answer.length() == dotIndex + 2 && answer.lastIndexOf("0") == answer.length() - 1))
+		{
+			answer = answer.substring(0, dotIndex);
+		}
+		else
+		{
+			//Do Nothing
+		}
+		results = answer;
+		return results;
 	}
 	
 	private void mathButton(int currentNum)
@@ -716,52 +762,6 @@ public class Panel extends JPanel
 			case "9": 	combineText = numDisplay.getText() + "9";
 						numDisplay.setText(combineText);
 						break;
-		}
-	}
-	
-	private String removePoint(String answer)
-	{
-		String results = "";
-		int dotIndex = answer.indexOf(".");
-		if ((answer.length() == dotIndex + 2 && answer.lastIndexOf("0") == answer.length() - 1))
-		{
-			answer = answer.substring(0, dotIndex);
-		}
-		else
-		{
-			//Do Nothing
-		}
-		results = answer;
-		return results;
-	}
-	
-	private void mathOperation(String mathOp)
-	{
-		if (undefinedStatus == true)
-		{
-			//Do Nothing
-		}
-		else
-		{
-			if (opStatus == false)
-			{
-				firstNum = Double.parseDouble(numDisplay.getText());
-				operation = mathOp;
-				numDisplay.setText("");
-				opStatus = true;
-				equalStatus = true;
-				pointCount = 0;
-			}
-			else
-			{
-				opNum = Double.parseDouble(numDisplay.getText());
-				numEquals(firstNum,opNum);
-				operation = mathOp;
-				firstNum = answer;
-				numStatus = true;
-				equalStatus = true;
-				pointCount = 0;
-			}
 		}
 	}
 }
