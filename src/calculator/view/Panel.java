@@ -649,7 +649,7 @@ public class Panel extends JPanel
 			}
 		}
 	}
-	
+
 	private void numEquals(double num1, double num2)
 	{
 		if (operation.equals("÷") && num2 == 0)
@@ -677,7 +677,7 @@ public class Panel extends JPanel
 			numDisplay.setText(stringAnswer);
 		}
 	}
-	
+
 	private String removePoint(String answer)
 	{
 		String results = "";
