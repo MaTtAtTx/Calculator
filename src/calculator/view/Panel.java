@@ -619,6 +619,7 @@ public class Panel extends JPanel
 		});
 	}
 	
+	//startComplexity
 	private void mathOperation(String mathOp)
 	{
 		if (undefinedStatus == true)
@@ -692,7 +693,9 @@ public class Panel extends JPanel
 		results = answer;
 		return results;
 	}
+	//endComplexity
 	
+	//startAbstraction
 	private void mathButton(int currentNum)
 	{
 		if (undefinedStatus == true)
@@ -764,4 +767,5 @@ public class Panel extends JPanel
 						break;
 		}
 	}
+	//endAbstraction
 }
