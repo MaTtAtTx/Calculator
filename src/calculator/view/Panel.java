@@ -537,6 +537,29 @@ public class Panel extends JPanel
 			}
 		});
 		
+		piButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				if (undefinedStatus == true)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					numDisplay.setText("3.14159265");
+				}
+			}
+		});
+		
+		roundButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				
+			}
+		});
+		
 		posNegButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
