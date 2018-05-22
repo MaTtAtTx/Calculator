@@ -27,6 +27,10 @@ public class Panel extends JPanel
 	private JButton clearButton;
 	private JButton deleteButton;
 	private JButton squareButton;
+	private JButton powButton;
+	private JButton sqrtButton;
+	private JButton piButton;
+	private JButton roundButton;
 	private JButton posNegButton;
 	private JButton equalsButton;
 	private JButton addButton;
@@ -51,6 +55,7 @@ public class Panel extends JPanel
 	private boolean equalStatus;
 	private boolean zeroFirst;
 	private boolean undefinedStatus;
+	private boolean powState;
 	
 	private String stringAnswer;
 	private String operation;
@@ -77,6 +82,10 @@ public class Panel extends JPanel
 		clearButton = new JButton("AC");
 		deleteButton = new JButton("del");
 		squareButton = new JButton("X²");
+		powButton = new JButton("^");
+		sqrtButton = new JButton("√");
+		piButton = new JButton("π");
+		roundButton = new JButton("R0");
 		posNegButton = new JButton("+/-");
 		equalsButton = new JButton("=");
 		addButton = new JButton("+");
@@ -101,6 +110,7 @@ public class Panel extends JPanel
 		equalStatus = false;
 		zeroFirst = false;
 		undefinedStatus = false;
+		powState = false;
 		
 		stringAnswer = "";
 		operation = ""; 
@@ -114,7 +124,7 @@ public class Panel extends JPanel
 	{
 		this.setLayout(appLayout);
 		this.setSize(500,700);
-		this.setBackground(new Color(0,0,75));
+		this.setBackground(new Color(0,0,70));
 		
 		this.add(numDisplay);
 		numDisplay.setFont(new Font("Calibri", Font.PLAIN, 45));
@@ -123,76 +133,88 @@ public class Panel extends JPanel
 		numDisplay.setPreferredSize(new Dimension(495,145));
 		
 		this.add(zeroButton);
-		zeroButton.setPreferredSize(new Dimension(118,83));
+		zeroButton.setPreferredSize(new Dimension(118,70));
 		zeroButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(pointButton);
-		pointButton.setPreferredSize(new Dimension(118,83));
+		pointButton.setPreferredSize(new Dimension(118,70));
 		pointButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(oneButton);
-		oneButton.setPreferredSize(new Dimension(118,83));
+		oneButton.setPreferredSize(new Dimension(118,70));
 		oneButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(twoButton);
-		twoButton.setPreferredSize(new Dimension(118,83));
+		twoButton.setPreferredSize(new Dimension(118,70));
 		twoButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(threeButton);
-		threeButton.setPreferredSize(new Dimension(118,83));
+		threeButton.setPreferredSize(new Dimension(118,70));
 		threeButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(fourButton);
-		fourButton.setPreferredSize(new Dimension(118,83));
+		fourButton.setPreferredSize(new Dimension(118,70));
 		fourButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(fiveButton);
-		fiveButton.setPreferredSize(new Dimension(118,83));
+		fiveButton.setPreferredSize(new Dimension(118,70));
 		fiveButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(sixButton);
-		sixButton.setPreferredSize(new Dimension(118,83));
+		sixButton.setPreferredSize(new Dimension(118,70));
 		sixButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(sevenButton);
-		sevenButton.setPreferredSize(new Dimension(118,83));
+		sevenButton.setPreferredSize(new Dimension(118,70));
 		sevenButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(eightButton);
-		eightButton.setPreferredSize(new Dimension(118,83));
+		eightButton.setPreferredSize(new Dimension(118,70));
 		eightButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(nineButton);
-		nineButton.setPreferredSize(new Dimension(118,83));
+		nineButton.setPreferredSize(new Dimension(118,70));
 		nineButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(clearButton);
-		clearButton.setPreferredSize(new Dimension(118,83));
+		clearButton.setPreferredSize(new Dimension(118,70));
 		clearButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(squareButton);
-		squareButton.setPreferredSize(new Dimension(118,83));
+		squareButton.setPreferredSize(new Dimension(118,70));
 		squareButton.setFont(new Font("Calibri", Font.PLAIN, 30));
+		this.add(powButton);
+		powButton.setPreferredSize(new Dimension(118,70));
+		powButton.setFont(new Font("Calibri", Font.PLAIN, 30));
+		this.add(sqrtButton);
+		sqrtButton.setPreferredSize(new Dimension(118,70));
+		sqrtButton.setFont(new Font("Calibri", Font.PLAIN, 30));
+		this.add(piButton);
+		piButton.setPreferredSize(new Dimension(118,70));
+		piButton.setFont(new Font("Calibri", Font.PLAIN, 30));
+		this.add(roundButton);
+		roundButton.setPreferredSize(new Dimension(118,70));
+		roundButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(deleteButton);
-		deleteButton.setPreferredSize(new Dimension(118,83));
+		deleteButton.setPreferredSize(new Dimension(118,70));
 		deleteButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(posNegButton);
-		posNegButton.setPreferredSize(new Dimension(118,83));
+		posNegButton.setPreferredSize(new Dimension(118,70));
 		posNegButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(equalsButton);
-		equalsButton.setPreferredSize(new Dimension(118,83));
+		equalsButton.setPreferredSize(new Dimension(118,70));
 		equalsButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(addButton);
-		addButton.setPreferredSize(new Dimension(118,83));
+		addButton.setPreferredSize(new Dimension(118,70));
 		addButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(subtractButton);
-		subtractButton.setPreferredSize(new Dimension(118,83));
+		subtractButton.setPreferredSize(new Dimension(118,70));
 		subtractButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(multiplyButton);
-		multiplyButton.setPreferredSize(new Dimension(118,83));
+		multiplyButton.setPreferredSize(new Dimension(118,70));
 		multiplyButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(divideButton);
-		divideButton.setPreferredSize(new Dimension(118,83));
+		divideButton.setPreferredSize(new Dimension(118,70));
 		divideButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(memClearButton);
-		memClearButton.setPreferredSize(new Dimension(118,83));
+		memClearButton.setPreferredSize(new Dimension(118,70));
 		memClearButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(memAddButton);
-		memAddButton.setPreferredSize(new Dimension(118,83));
+		memAddButton.setPreferredSize(new Dimension(118,70));
 		memAddButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(memSubtractButton);
-		memSubtractButton.setPreferredSize(new Dimension(118,83));
+		memSubtractButton.setPreferredSize(new Dimension(118,70));
 		memSubtractButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 		this.add(memRecallButton);
-		memRecallButton.setPreferredSize(new Dimension(118,83));
+		memRecallButton.setPreferredSize(new Dimension(118,70));
 		memRecallButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 	}
 
@@ -223,12 +245,20 @@ public class Panel extends JPanel
 		appLayout.putConstraint(SpringLayout.SOUTH, eightButton, 0, SpringLayout.SOUTH, sevenButton);
 		appLayout.putConstraint(SpringLayout.WEST, nineButton, 0, SpringLayout.WEST, sixButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, nineButton, 0, SpringLayout.SOUTH, eightButton);
-		appLayout.putConstraint(SpringLayout.WEST, clearButton, 0, SpringLayout.WEST, sevenButton);
-		appLayout.putConstraint(SpringLayout.SOUTH, clearButton, -2, SpringLayout.NORTH, sevenButton);
+		appLayout.putConstraint(SpringLayout.WEST, clearButton, 0, SpringLayout.WEST, squareButton);
+		appLayout.putConstraint(SpringLayout.SOUTH, clearButton, -2, SpringLayout.NORTH, squareButton);
 		appLayout.putConstraint(SpringLayout.WEST, deleteButton, 0, SpringLayout.WEST, eightButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, deleteButton, 0, SpringLayout.SOUTH, clearButton);
-		appLayout.putConstraint(SpringLayout.WEST, squareButton, 0, SpringLayout.WEST, nineButton);
-		appLayout.putConstraint(SpringLayout.SOUTH, squareButton, 0, SpringLayout.SOUTH, clearButton);
+		appLayout.putConstraint(SpringLayout.WEST, squareButton, 0, SpringLayout.WEST, sevenButton);
+		appLayout.putConstraint(SpringLayout.SOUTH, squareButton, -2, SpringLayout.NORTH, sevenButton);
+		appLayout.putConstraint(SpringLayout.WEST, powButton, 0, SpringLayout.WEST, eightButton);
+		appLayout.putConstraint(SpringLayout.SOUTH, powButton, 0, SpringLayout.SOUTH, squareButton);
+		appLayout.putConstraint(SpringLayout.WEST, sqrtButton, 0, SpringLayout.WEST, nineButton);
+		appLayout.putConstraint(SpringLayout.SOUTH, sqrtButton, 0, SpringLayout.SOUTH, powButton);
+		appLayout.putConstraint(SpringLayout.WEST, piButton, 0, SpringLayout.WEST, sqrtButton);
+		appLayout.putConstraint(SpringLayout.SOUTH, piButton, 0, SpringLayout.SOUTH, deleteButton);
+		appLayout.putConstraint(SpringLayout.WEST, roundButton, 0, SpringLayout.WEST, divideButton);
+		appLayout.putConstraint(SpringLayout.SOUTH, roundButton, 0, SpringLayout.SOUTH, piButton);
 		appLayout.putConstraint(SpringLayout.WEST, posNegButton, 4, SpringLayout.EAST, pointButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, posNegButton, 0, SpringLayout.SOUTH, pointButton);
 		appLayout.putConstraint(SpringLayout.WEST, equalsButton, 4, SpringLayout.EAST, posNegButton);
@@ -240,14 +270,14 @@ public class Panel extends JPanel
 		appLayout.putConstraint(SpringLayout.WEST, multiplyButton, 0, SpringLayout.WEST, subtractButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, multiplyButton, 0, SpringLayout.SOUTH, nineButton);
 		appLayout.putConstraint(SpringLayout.WEST, divideButton, 0, SpringLayout.WEST, multiplyButton);
-		appLayout.putConstraint(SpringLayout.SOUTH, divideButton, 0, SpringLayout.SOUTH, squareButton);
+		appLayout.putConstraint(SpringLayout.SOUTH, divideButton, 0, SpringLayout.SOUTH, sqrtButton);
 		appLayout.putConstraint(SpringLayout.WEST, memClearButton, 0, SpringLayout.WEST, clearButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, memClearButton, -2, SpringLayout.NORTH, clearButton);
 		appLayout.putConstraint(SpringLayout.WEST, memAddButton, 0, SpringLayout.WEST, deleteButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, memAddButton, 0, SpringLayout.SOUTH, memClearButton);
-		appLayout.putConstraint(SpringLayout.WEST, memSubtractButton, 0, SpringLayout.WEST, squareButton);
+		appLayout.putConstraint(SpringLayout.WEST, memSubtractButton, 0, SpringLayout.WEST, piButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, memSubtractButton, 0, SpringLayout.SOUTH, memAddButton);
-		appLayout.putConstraint(SpringLayout.WEST, memRecallButton, 0, SpringLayout.WEST, divideButton);
+		appLayout.putConstraint(SpringLayout.WEST, memRecallButton, 0, SpringLayout.WEST, roundButton);
 		appLayout.putConstraint(SpringLayout.SOUTH, memRecallButton, 0, SpringLayout.SOUTH, memSubtractButton);
 	}
 	
@@ -409,6 +439,7 @@ public class Panel extends JPanel
 				equalStatus = false;
 				zeroFirst = false;
 				undefinedStatus = false;
+				powState = false;
 				pointCount = 0;
 				
 				numDisplay.setText("");
@@ -468,6 +499,29 @@ public class Panel extends JPanel
 				}
 			}
 		});
+		
+//		powButton.addActionListener(new ActionListener()
+//		{
+//			public void actionPerformed(ActionEvent click)
+//			{
+//				if (undefinedStatus == true)
+//				{
+//					//Do Nothing
+//				}
+//				if (powState = false)
+//				{
+//					double powNum = Double.parseDouble(numDisplay.getText());
+//					squareNum = squareNum * squareNum;
+//					String powString = String.valueOf(powNum);
+//					squareString = removePoint(squareString);
+//					numDisplay.setText(squareString);
+//				}
+//				else
+//				{
+//					
+//				}
+//			}
+//		});
 		
 		posNegButton.addActionListener(new ActionListener()
 		{
