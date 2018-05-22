@@ -556,7 +556,19 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				
+				double rNum = Double.parseDouble(numDisplay.getText());
+				boolean rCheck = roundCheck(rNum);
+				if (rCheck == false)
+				{
+					rNum = Math.floor(rNum);
+				}
+				else
+				{
+					rNum = Math.ceil(rNum);
+				}
+				String roundedNum = String.valueOf(rNum);
+				String newString = removePoint(roundedNum);
+				numDisplay.setText(newString);
 			}
 		});
 		
@@ -710,7 +722,6 @@ public class Panel extends JPanel
 		});
 	}
 	
-	//startComplexity
 	private void mathOperation(String mathOp)
 	{
 		if (undefinedStatus == true)
@@ -786,9 +797,26 @@ public class Panel extends JPanel
 		results = answer;
 		return results;
 	}
-	//endComplexity
 	
-	//startAbstraction
+	private boolean roundCheck(Double rNumber)
+	{
+		boolean rCheck = false;
+		String roundString = String.valueOf(rNumber);
+		int dotIndex = roundString.indexOf(".");
+		int tempNum = Integer.parseInt(roundString.substring(dotIndex + 1, dotIndex + 2));
+		
+		if (tempNum < 5)
+		{
+			rCheck = false;
+		}
+		else
+		{
+			rCheck = true;
+		}
+		
+		return rCheck;
+	}
+	
 	private void mathButton(int currentNum)
 	{
 		if (undefinedStatus == true)
@@ -860,5 +888,4 @@ public class Panel extends JPanel
 						break;
 		}
 	}
-	//endAbstraction
 }
