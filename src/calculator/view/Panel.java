@@ -83,7 +83,7 @@ public class Panel extends JPanel
 		deleteButton = new JButton("del");
 		squareButton = new JButton("X²");
 		powButton = new JButton("^");
-		sqrtButton = new JButton("√");
+		sqrtButton = new JButton("√sqrt");
 		piButton = new JButton("π");
 		roundButton = new JButton("R0");
 		posNegButton = new JButton("+/-");
@@ -500,28 +500,42 @@ public class Panel extends JPanel
 			}
 		});
 		
-//		powButton.addActionListener(new ActionListener()
-//		{
-//			public void actionPerformed(ActionEvent click)
-//			{
-//				if (undefinedStatus == true)
-//				{
-//					//Do Nothing
-//				}
-//				if (powState = false)
-//				{
-//					double powNum = Double.parseDouble(numDisplay.getText());
-//					squareNum = squareNum * squareNum;
-//					String powString = String.valueOf(powNum);
-//					squareString = removePoint(squareString);
-//					numDisplay.setText(squareString);
-//				}
-//				else
-//				{
-//					
-//				}
-//			}
-//		});
+		powButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				if (undefinedStatus == true)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					firstNum = Double.parseDouble(numDisplay.getText());
+					operation = "^";
+					numStatus = true;
+					equalStatus = true;
+				}
+			}
+		});
+		
+		sqrtButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				if (undefinedStatus == true)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					double sqrtNum = Double.parseDouble(numDisplay.getText());
+					sqrtNum = Math.sqrt(sqrtNum);
+					String sqrtString = String.valueOf(sqrtNum);
+					sqrtString = removePoint(sqrtString);
+					numDisplay.setText(sqrtString);
+				}
+			}
+		});
 		
 		posNegButton.addActionListener(new ActionListener()
 		{
@@ -722,6 +736,8 @@ public class Panel extends JPanel
 				case "x": 	answer = num1 * num2;
 							break;
 				case "÷": 	answer = num1 / num2;
+							break;
+				case "^": 	answer = Math.pow(num1, num2);
 							break;
 				case "": 	//Do Nothing
 							break;
