@@ -12,6 +12,7 @@ public class Panel extends JPanel
 	private SpringLayout appLayout;
 	
 	private JLabel numDisplay;
+	private JLabel memDisplay;
 	
 	private JButton zeroButton;
 	private JButton pointButton;
@@ -67,6 +68,9 @@ public class Panel extends JPanel
 		appLayout = new SpringLayout();
 		
 		numDisplay = new JLabel();
+		memDisplay = new JLabel(" Mem Value: ");
+		appLayout.putConstraint(SpringLayout.NORTH, memDisplay, 0, SpringLayout.NORTH, numDisplay);
+		appLayout.putConstraint(SpringLayout.EAST, memDisplay, 0, SpringLayout.EAST, numDisplay);
 		
 		zeroButton = new JButton("0");
 		pointButton = new JButton(".");
@@ -131,6 +135,12 @@ public class Panel extends JPanel
 		numDisplay.setOpaque(true);
 		numDisplay.setBackground(new Color(255,255,255));
 		numDisplay.setPreferredSize(new Dimension(495,145));
+		
+		this.add(memDisplay);
+		memDisplay.setFont(new Font("Calibri", Font.PLAIN, 14));
+		memDisplay.setOpaque(true);
+		memDisplay.setBackground(new Color(235,235,235));
+		memDisplay.setPreferredSize(new Dimension(200,30));
 		
 		this.add(zeroButton);
 		zeroButton.setPreferredSize(new Dimension(118,70));
@@ -667,7 +677,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (undefinedStatus == true)
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
 				{
 					//Do Nothing
 				}
@@ -676,6 +686,9 @@ public class Panel extends JPanel
 					String tempString = numDisplay.getText();
 					Double tempNum = Double.parseDouble(tempString);
 					memNum = memNum + tempNum;
+					tempString = String.valueOf(memNum);
+					String otherString = removePoint(tempString);
+					memDisplay.setText(" Mem Value: " + otherString);
 				}
 			}
 		});
@@ -684,7 +697,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (undefinedStatus == true)
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
 				{
 					//Do Nothing
 				}
@@ -693,6 +706,9 @@ public class Panel extends JPanel
 					String tempString = numDisplay.getText();
 					Double tempNum = Double.parseDouble(tempString);
 					memNum = memNum - tempNum;
+					tempString = String.valueOf(memNum);
+					String otherString = removePoint(tempString);
+					memDisplay.setText(" Mem Value: " + otherString);
 				}
 			}
 		});
