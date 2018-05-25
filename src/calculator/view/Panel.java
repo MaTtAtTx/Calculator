@@ -56,7 +56,6 @@ public class Panel extends JPanel
 	private boolean equalStatus;
 	private boolean zeroFirst;
 	private boolean undefinedStatus;
-	private boolean powState;
 	
 	private String stringAnswer;
 	private String operation;
@@ -69,8 +68,6 @@ public class Panel extends JPanel
 		
 		numDisplay = new JLabel();
 		memDisplay = new JLabel(" Mem Value: ");
-		appLayout.putConstraint(SpringLayout.NORTH, memDisplay, 0, SpringLayout.NORTH, numDisplay);
-		appLayout.putConstraint(SpringLayout.EAST, memDisplay, 0, SpringLayout.EAST, numDisplay);
 		
 		zeroButton = new JButton("0");
 		pointButton = new JButton(".");
@@ -114,7 +111,6 @@ public class Panel extends JPanel
 		equalStatus = false;
 		zeroFirst = false;
 		undefinedStatus = false;
-		powState = false;
 		
 		stringAnswer = "";
 		operation = ""; 
@@ -134,13 +130,13 @@ public class Panel extends JPanel
 		numDisplay.setFont(new Font("Calibri", Font.PLAIN, 45));
 		numDisplay.setOpaque(true);
 		numDisplay.setBackground(new Color(255,255,255));
-		numDisplay.setPreferredSize(new Dimension(495,145));
+		numDisplay.setPreferredSize(new Dimension(495,120));
 		
 		this.add(memDisplay);
-		memDisplay.setFont(new Font("Calibri", Font.PLAIN, 14));
+		memDisplay.setFont(new Font("Calibri", Font.PLAIN, 12));
 		memDisplay.setOpaque(true);
 		memDisplay.setBackground(new Color(235,235,235));
-		memDisplay.setPreferredSize(new Dimension(200,30));
+		memDisplay.setPreferredSize(new Dimension(200,25));
 		
 		this.add(zeroButton);
 		zeroButton.setPreferredSize(new Dimension(118,70));
@@ -230,9 +226,11 @@ public class Panel extends JPanel
 
 	private void setupLayout()
 	{
+		appLayout.putConstraint(SpringLayout.NORTH, numDisplay, 36, SpringLayout.NORTH, this);
 		appLayout.putConstraint(SpringLayout.EAST, numDisplay, -1, SpringLayout.EAST, memRecallButton);
 		appLayout.putConstraint(SpringLayout.WEST, numDisplay, 1, SpringLayout.WEST, memClearButton);
-		appLayout.putConstraint(SpringLayout.NORTH, numDisplay, 6, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.NORTH, memDisplay, 6, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.EAST, memDisplay, 0, SpringLayout.EAST, numDisplay);
 		appLayout.putConstraint(SpringLayout.WEST, zeroButton, 6, SpringLayout.WEST, this);
 		appLayout.putConstraint(SpringLayout.SOUTH, zeroButton, -5, SpringLayout.SOUTH, this);
 		appLayout.putConstraint(SpringLayout.WEST, pointButton, 4, SpringLayout.EAST, zeroButton);
@@ -449,7 +447,6 @@ public class Panel extends JPanel
 				equalStatus = false;
 				zeroFirst = false;
 				undefinedStatus = false;
-				powState = false;
 				pointCount = 0;
 				
 				numDisplay.setText("");
@@ -670,6 +667,7 @@ public class Panel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				memNum = 0.0;
+				memDisplay.setText(" Mem Value: ");
 			}
 		});
 		
