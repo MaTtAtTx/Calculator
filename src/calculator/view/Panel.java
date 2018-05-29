@@ -609,8 +609,8 @@ public class Panel extends JPanel
 					{
 						rNum = Math.ceil(rNum);
 					}
-					String roundedNum = String.valueOf(rNum);
-					String newString = removePoint(roundedNum);
+					String newString = String.valueOf(rNum);
+					newString = removePoint(newString);
 					numDisplay.setText(newString);
 				}
 			}
@@ -947,8 +947,8 @@ public class Panel extends JPanel
 	{
 		storeNum = answer;
 		String displayString = String.valueOf(storeNum);
-		String newString = removePoint(displayString);
-		ansDisplay.setText(" Prev. Ans: " + newString);
+		displayString = removePoint(displayString);
+		ansDisplay.setText(" Prev. Ans: " + displayString);
 	}
 	
 	private void combineNum(String currentValue)
