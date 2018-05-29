@@ -584,19 +584,26 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				double rNum = Double.parseDouble(numDisplay.getText());
-				boolean rCheck = roundCheck(rNum);
-				if (rCheck == false)
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
 				{
-					rNum = Math.floor(rNum);
+					//Do Nothing
 				}
 				else
 				{
-					rNum = Math.ceil(rNum);
+					double rNum = Double.parseDouble(numDisplay.getText());
+					boolean rCheck = roundCheck(rNum);
+					if (rCheck == false)
+					{
+						rNum = Math.floor(rNum);
+					}
+					else
+					{
+						rNum = Math.ceil(rNum);
+					}
+					String roundedNum = String.valueOf(rNum);
+					String newString = removePoint(roundedNum);
+					numDisplay.setText(newString);
 				}
-				String roundedNum = String.valueOf(rNum);
-				String newString = removePoint(roundedNum);
-				numDisplay.setText(newString);
 			}
 		});
 		
@@ -655,7 +662,14 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				mathOperation("+");
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
+				{
+					//Do Nothing
+				}
+				else
+				{
+					mathOperation("+");
+				}
 			}
 		});
 		
@@ -663,7 +677,14 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				mathOperation("-");
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
+				{
+					//Do Nothing
+				}
+				else
+				{
+					mathOperation("-");
+				}
 			}
 		});
 		
@@ -671,7 +692,14 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				mathOperation("x");
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
+				{
+					//Do Nothing
+				}
+				else
+				{
+					mathOperation("x");
+				}
 			}
 		});
 		
@@ -679,7 +707,14 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				mathOperation("÷");
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
+				{
+					//Do Nothing
+				}
+				else
+				{
+					mathOperation("÷");
+				}
 			}
 		});
 		
