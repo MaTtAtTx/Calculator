@@ -528,6 +528,7 @@ public class Panel extends JPanel
 				{
 					double squareNum = Double.parseDouble(numDisplay.getText());
 					squareNum = squareNum * squareNum;
+					storeAnswer(squareNum);
 					String squareString = String.valueOf(squareNum);
 					squareString = removePoint(squareString);
 					numDisplay.setText(squareString);
@@ -749,8 +750,8 @@ public class Panel extends JPanel
 					Double tempNum = Double.parseDouble(tempString);
 					memNum = memNum + tempNum;
 					tempString = String.valueOf(memNum);
-					String otherString = removePoint(tempString);
-					memDisplay.setText(" Mem Value: " + otherString);
+					tempString = removePoint(tempString);
+					memDisplay.setText(" Mem Value: " + tempString);
 				}
 			}
 		});
@@ -769,8 +770,8 @@ public class Panel extends JPanel
 					Double tempNum = Double.parseDouble(tempString);
 					memNum = memNum - tempNum;
 					tempString = String.valueOf(memNum);
-					String otherString = removePoint(tempString);
-					memDisplay.setText(" Mem Value: " + otherString);
+					tempString = removePoint(tempString);
+					memDisplay.setText(" Mem Value: " + tempString);
 				}
 			}
 		});
@@ -796,6 +797,25 @@ public class Panel extends JPanel
 						numDisplay.setText(newString);
 					}
 				}
+			}
+		});
+		
+		ansRecallButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String tempString = String.valueOf(storeNum);
+				tempString = removePoint(tempString);
+				numDisplay.setText(tempString);
+			}
+		});
+		
+		ansClearButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				storeNum = 0.0;
+				ansDisplay.setText(" Prev. Ans: ");
 			}
 		});
 	}
@@ -854,6 +874,7 @@ public class Panel extends JPanel
 				case "": 	//Do Nothing
 							break;
 			}
+			storeAnswer(answer);
 			stringAnswer = String.valueOf(answer);
 			stringAnswer = removePoint(stringAnswer);
 			numDisplay.setText(stringAnswer);
@@ -927,7 +948,7 @@ public class Panel extends JPanel
 		storeNum = answer;
 		String displayString = String.valueOf(storeNum);
 		String newString = removePoint(displayString);
-		ansDisplay.setText(newString);
+		ansDisplay.setText(" Prev. Ans: " + newString);
 	}
 	
 	private void combineNum(String currentValue)
