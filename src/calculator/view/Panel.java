@@ -780,22 +780,15 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (undefinedStatus == true)
+				if (undefinedStatus == true || memNum == 0.0)
 				{
 					//Do Nothing
 				}
 				else
 				{
-					if (memNum == 0.0)
-					{
-						//Do Nothing
-					}
-					else
-					{
-						String newString = String.valueOf(memNum);
-						newString = removePoint(newString);
-						numDisplay.setText(newString);
-					}
+					String newString = String.valueOf(memNum);
+					newString = removePoint(newString);
+					numDisplay.setText(newString);
 				}
 			}
 		});
@@ -804,9 +797,16 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String tempString = String.valueOf(storeNum);
-				tempString = removePoint(tempString);
-				numDisplay.setText(tempString);
+				if (undefinedStatus == true || storeNum == 0.0)
+				{
+					//Do Nothing
+				}
+				else
+				{
+					String tempString = String.valueOf(storeNum);
+					tempString = removePoint(tempString);
+					numDisplay.setText(tempString);
+				}
 			}
 		});
 		
@@ -945,7 +945,8 @@ public class Panel extends JPanel
 	
 	private void storeAnswer(Double answer)
 	{
-		storeNum = answer;
+		Double tempNum = answer;
+		storeNum = tempNum;
 		String displayString = String.valueOf(storeNum);
 		displayString = removePoint(displayString);
 		ansDisplay.setText(" Prev. Ans: " + displayString);
