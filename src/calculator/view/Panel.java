@@ -13,6 +13,7 @@ public class Panel extends JPanel
 	
 	private JLabel numDisplay;
 	private JLabel memDisplay;
+	private JLabel ansDisplay;
 	
 	private JButton zeroButton;
 	private JButton pointButton;
@@ -42,12 +43,14 @@ public class Panel extends JPanel
 	private JButton memAddButton;
 	private JButton memSubtractButton;
 	private JButton memRecallButton;
+	private JButton ansRecallButton;
 	
 	private double firstNum;
 	private double secondNum;
 	private double opNum;
 	private double answer;
 	private double memNum;
+	private double storeNum;
 	
 	private int pointCount;
 	
@@ -68,6 +71,7 @@ public class Panel extends JPanel
 		
 		numDisplay = new JLabel();
 		memDisplay = new JLabel(" Mem Value: ");
+		ansDisplay = new JLabel(" Prev. Ans: ");
 		
 		zeroButton = new JButton("0");
 		pointButton = new JButton(".");
@@ -95,14 +99,19 @@ public class Panel extends JPanel
 		divideButton = new JButton("÷");
 		memClearButton = new JButton("mc");
 		memAddButton = new JButton("m+");
+		appLayout.putConstraint(SpringLayout.EAST, ansDisplay, 40, SpringLayout.EAST, memAddButton);
 		memSubtractButton = new JButton("m-");
 		memRecallButton = new JButton("mr");
+		ansRecallButton = new JButton("ans");
+		appLayout.putConstraint(SpringLayout.NORTH, ansRecallButton, -2, SpringLayout.NORTH, ansDisplay);
+		appLayout.putConstraint(SpringLayout.WEST, ansRecallButton, -5, SpringLayout.WEST, memClearButton);
 		
 		firstNum = 0.0;
 		secondNum = 0.0;
 		opNum = 0.0;
 		answer = 0.0;
 		memNum = 0.0;
+		storeNum = 0.0;
 		
 		pointCount = 0;
 		
@@ -137,6 +146,16 @@ public class Panel extends JPanel
 		memDisplay.setOpaque(true);
 		memDisplay.setBackground(new Color(235,235,235));
 		memDisplay.setPreferredSize(new Dimension(200,25));
+		
+		this.add(ansDisplay);
+		ansDisplay.setFont(new Font("Calibri", Font.PLAIN, 12));
+		ansDisplay.setOpaque(true);
+		ansDisplay.setBackground(new Color(235,235,235));
+		ansDisplay.setPreferredSize(new Dimension(200,25));
+		
+		this.add(ansRecallButton);
+		ansRecallButton.setPreferredSize(new Dimension(85,32));
+		ansRecallButton.setFont(new Font("Calibri", Font.PLAIN, 12));
 		
 		this.add(zeroButton);
 		zeroButton.setPreferredSize(new Dimension(118,70));
@@ -223,7 +242,7 @@ public class Panel extends JPanel
 		memRecallButton.setPreferredSize(new Dimension(118,70));
 		memRecallButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 	}
-
+	
 	private void setupLayout()
 	{
 		appLayout.putConstraint(SpringLayout.NORTH, numDisplay, 36, SpringLayout.NORTH, this);
@@ -231,6 +250,7 @@ public class Panel extends JPanel
 		appLayout.putConstraint(SpringLayout.WEST, numDisplay, 1, SpringLayout.WEST, memClearButton);
 		appLayout.putConstraint(SpringLayout.NORTH, memDisplay, 6, SpringLayout.NORTH, this);
 		appLayout.putConstraint(SpringLayout.EAST, memDisplay, 0, SpringLayout.EAST, numDisplay);
+		appLayout.putConstraint(SpringLayout.NORTH, ansDisplay, 0, SpringLayout.NORTH, memDisplay);
 		appLayout.putConstraint(SpringLayout.WEST, zeroButton, 6, SpringLayout.WEST, this);
 		appLayout.putConstraint(SpringLayout.SOUTH, zeroButton, -5, SpringLayout.SOUTH, this);
 		appLayout.putConstraint(SpringLayout.WEST, pointButton, 4, SpringLayout.EAST, zeroButton);
@@ -537,6 +557,7 @@ public class Panel extends JPanel
 				{
 					double sqrtNum = Double.parseDouble(numDisplay.getText());
 					sqrtNum = Math.sqrt(sqrtNum);
+					storeNum = sqrtNum;
 					String sqrtString = String.valueOf(sqrtNum);
 					sqrtString = removePoint(sqrtString);
 					numDisplay.setText(sqrtString);
@@ -856,6 +877,11 @@ public class Panel extends JPanel
 				combineNum(String.valueOf(currentNum));
 			}
 		}
+	}
+	
+	private void storeAnswer(Double answer)
+	{
+		
 	}
 	
 	private void combineNum(String currentValue)
