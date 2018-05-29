@@ -512,7 +512,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (undefinedStatus == true)
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
 				{
 					//Do Nothing
 				}
@@ -531,7 +531,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (undefinedStatus == true)
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
 				{
 					//Do Nothing
 				}
@@ -549,7 +549,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (undefinedStatus == true)
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
 				{
 					//Do Nothing
 				}
@@ -604,7 +604,7 @@ public class Panel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				if (undefinedStatus == true)
+				if (undefinedStatus == true || numDisplay.getText().equals(""))
 				{
 					//Do Nothing
 				}
