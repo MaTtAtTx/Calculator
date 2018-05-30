@@ -128,6 +128,7 @@ public class Panel extends JPanel
 		setupListeners();
 	}
 
+	//Setup the Items that are added to the panel
 	private void setupPanel()
 	{
 		this.setLayout(appLayout);
@@ -246,6 +247,7 @@ public class Panel extends JPanel
 		memRecallButton.setFont(new Font("Calibri", Font.PLAIN, 30));
 	}
 	
+	//Add constraints to the buttons, etc. that are added to the panel.
 	private void setupLayout()
 	{
 		appLayout.putConstraint(SpringLayout.NORTH, numDisplay, 36, SpringLayout.NORTH, this);
@@ -317,6 +319,7 @@ public class Panel extends JPanel
 		appLayout.putConstraint(SpringLayout.SOUTH, memRecallButton, 0, SpringLayout.SOUTH, memSubtractButton);
 	}
 	
+	//Add action listeners for the buttons
 	private void setupListeners()
 	{	
 		zeroButton.addActionListener(new ActionListener()
@@ -388,6 +391,7 @@ public class Panel extends JPanel
 			}
 		});
 		
+		//Math Button method is called which is what combines the num, it just saves code
 		oneButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -916,6 +920,15 @@ public class Panel extends JPanel
 		return rCheck;
 	}
 	
+	private void storeAnswer(Double answer)
+	{
+		Double tempNum = answer;
+		storeNum = tempNum;
+		String displayString = String.valueOf(storeNum);
+		displayString = removePoint(displayString);
+		ansDisplay.setText(" Prev. Ans: " + displayString);
+	}
+	
 	private void mathButton(int currentNum)
 	{
 		if (undefinedStatus == true)
@@ -941,15 +954,6 @@ public class Panel extends JPanel
 				combineNum(String.valueOf(currentNum));
 			}
 		}
-	}
-	
-	private void storeAnswer(Double answer)
-	{
-		Double tempNum = answer;
-		storeNum = tempNum;
-		String displayString = String.valueOf(storeNum);
-		displayString = removePoint(displayString);
-		ansDisplay.setText(" Prev. Ans: " + displayString);
 	}
 	
 	private void combineNum(String currentValue)
